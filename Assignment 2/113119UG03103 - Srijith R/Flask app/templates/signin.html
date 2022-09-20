@@ -1,0 +1,35 @@
+{% extends 'nav.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block head %}
+    <title>Signin page</title>
+    {% endblock %}
+</head>
+<body>
+    
+    {% block body %} 
+    
+    <section style="margin-left: 45%;margin-top: 3rem">
+        <h1>Singin</h1>
+        <form action="/signin" method="POST" >
+        
+            <label>Email</label><br>
+            <input type="text" name="email"><br><br>
+    
+            <label>Password</label><br>
+            <input type="password" name="password"><br><br>
+    
+            <input type="submit" class="btn btn-pri" style="border-color: black;">
+        </form>
+    </section>
+
+    {% endblock %}
+    
+</body>
+</html>
