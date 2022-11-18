@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+	<title>Items</title>
+
+	<link rel="stylesheet" type="text/css" href="/static/css/app.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/add_prod.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/items.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	
+</head>
+
+<style>
+        
+    .dropdown {
+      position: relative;
+      display: inline-block;
+	  
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+
+ 
+    </style>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="/dashboard">
+          <span class="align-middle">Inventory</span>
+        </a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Pages
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/dashboard">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/items">
+              <i class="align-middle" data-feather="box"></i> <span class="align-middle">Items</span>
+            </a>
+            <li class="sidebar-item ">
+						<a class="sidebar-link" href="/purchase_order">
+              <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Purchase items</span>
+            </a>
+			<li class="sidebar-item active">
+						<a class="sidebar-link" href="/sales">
+              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">New Sales</span>
+            </a>
+		</nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown">
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  <span class="text-dark">{{user_name_nav}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+			<main class="content">
+				<div class="container-fluid p-0">
+					
+					<h1 class="h3 mb-3">Sales Items from Inventory</h1>
+				
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									
+                                    <div>
+                                      <form method="post" action="/sales">
+                                        <p style="color: lightseagreen;display: inline;">{{msg}}</p>
+                                        <p style="color: red;display: inline;">{{error}}</p><br>
+                                        <Table>
+                                            <tr>
+                                                <td>
+                                                    <label for="Customer Name" >Customer Name</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="customer_name" id="in">
+                                                </td>
+                                                <td>
+                                                    <label for="Customer Email">Customer Email</label>
+                                                </td>
+                                                <td>
+                                                    <input type="email" name="customer_email" id="in">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                              
+                                                <td>
+                                                    <label for="Phone Number">Phone number</label>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="phone_number" id="in">
+                                                </td>
+                                                <td>
+                                                  <p style="color: red;display: inline;">{{invalid_msg}}</p><br>
+                                                    <label for="Product Name">Product Id</label>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="product_id" id="in">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="Quantity">Quantity</label>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="quantity" id="in">
+                                                </td>
+                                            </tr>
+                                                <td>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </td>                            
+                                            </tr>
+                                        </Table>
+                                      </form>
+                                    </div>
+								</div>
+								<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+			            <h1 class="h3 mb-3"><strong>Sales</strong> History</h1>
+									<table>
+										<thead style="background-color: #222e3c;">
+										<tr class="table100-head">
+										<th class="column1">Id</th>
+										<th class="column2">Coustomer name</th>
+										<th class="column3">Coustomer email</th>
+										<th class="column4">coustomer phone number</th>
+										<th class="column5">Product ID</th>
+										<th class="column6">Date</th>
+										<th class="column7">Product name</th>
+										<th class="column9">Quantity</th>
+										<th class="column10">Billing amount</th>
+									
+					
+										</thead>
+										<tbody>
+										{% for row in users %}
+										<tr >
+										<td class="column1">{{row["SALES_ID"]}}</td>
+										<td class="column2">{{row["CUSTOMER_NAME"]}}</td>
+										<td class="column3">{{row["CUSTOMER_EMAIL"]}}</td>
+										<td class="column4">{{row["PHONE_NUMBER"]}}</td>
+										<td class="column5">{{row["PRODUCT_ID"]}}</td>
+										<td class="column6">{{row["DATE"]}}</td>
+										<td class="column7">{{row["PRODUCT_NAME"]}}</td>
+										<td class="column9">{{row["QUANTITY"]}}</td>
+										<td class="column10">{{row["BILLING_AMOUNT"]}}</td>
+										</tr>
+										{% endfor %}
+										</tbody>
+										</table>
+								</div>
+								<div class="card-body">
+								</div>
+							</div>
+						</div>
+					</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</main>
+		</div>
+	</div>
+
+	<script src="/Inventory management system/static/js/app.js"></script>
+	<script src="/static/js/app.js"></script>
+
+    
+    
+
+</body>
+
+</html>
