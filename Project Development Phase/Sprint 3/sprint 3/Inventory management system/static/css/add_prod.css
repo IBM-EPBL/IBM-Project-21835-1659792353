@@ -1,0 +1,16 @@
+#in {
+  border: 0.5px;
+  border-color: black;
+  border-style: solid;
+  box-shadow: 3px 3px lightblue;
+  border-radius: 2px;
+  width: 250px;
+  height: 27px;
+}
+
+#dro {
+  border: 1px solid black;
+  padding: 5px 60px;
+  border-radius: 3px;
+  box-shadow: 3px 3px lightblue;
+}
