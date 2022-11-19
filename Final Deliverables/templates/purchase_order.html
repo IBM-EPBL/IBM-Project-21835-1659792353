@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+	<title>Items</title>
+
+	<link rel="stylesheet" type="text/css" href="/static/css/app.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/add_prod.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/items.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	
+</head>
+
+<style>
+        
+    .dropdown {
+      position: relative;
+      display: inline-block;
+	  
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+
+	/* toggle btn */
+
+	.switch {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #c73c3c;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+input:checked + .slider {
+  background-color: #2ab933bd;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(55px);
+  -ms-transform: translateX(55px);
+  transform: translateX(117px);
+}
+
+/*------ ADDED CSS ---------*/
+.on
+{
+  display: none;
+}
+
+.on, .off
+{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 13px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;}
+
+
+ 
+</style>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="/dashboard">
+          <span class="align-middle">Inventory</span>
+        </a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Pages
+					</li>
+
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/dashboard">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/items">
+              <i class="align-middle" data-feather="box"></i> <span class="align-middle">Items</span>
+            </a>
+            <li class="sidebar-item active">
+						<a class="sidebar-link" href="/purchase_order">
+              <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Purchase items</span>
+            </a>
+            <li class="sidebar-item ">
+						<a class="sidebar-link" href="/sales">
+              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">New Sales</span>
+            </a>
+		</nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown">
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  <span class="text-dark">{{user_name_nav}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+
+			<main class="content">
+				<div class="container-fluid p-0">
+					
+					<h1 class="h3 mb-3">Items In Inventory</h1>
+				
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									
+                                    <div>
+                                        <form method="post" action="/purchase_order">
+											<p style="color: lightseagreen;display: inline;">{{msg}}</p>
+											<Table>
+												<tr>
+													<p style="color: red;display: inline;">{{invalid_msg}}</p>
+													<td>
+														<label for="Product Name">Product Name</label>
+													</td>
+													<td>
+														<input type="text" name="product_name" id="in">
+													</td>
+													<td>
+														<label for="Supplier Name">Supplier Name</label>
+													</td>
+													<td>
+														<input type="text" name="Supplier_name" id="in">
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<label for="Purchase Price">Purchase Price</label>
+													</td>
+													<td>
+														<input type="number" name="purchase_price" id="in">
+													</td>
+													<td>
+														<label for="Selling Price">Selling Price</label>
+													</td>
+													<td>
+														<input type="number" name="selling_price" id="in">
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<label for="Quantity">Quantity</label>
+													</td>
+													<td>
+														<input type="number" name="quantity" id="in">
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<label for="Quantity">Low Stock Limit</label>
+													</td>
+													<td>
+														<input type="number" name="low_stock" id="in">
+													</td>
+												</tr>
+													<td>
+														<button type="submit" class="btn btn-primary">Submit</button>
+													</td>
+													<td></td>
+													
+												</tr>
+											</Table>
+										</form>
+                                    </div>
+
+								</div>
+								<div class="card-body">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</main>
+		</div>
+	</div>
+
+	<script src="/Inventory management system/static/js/app.js"></script>
+	<script src="/static/js/app.js"></script>
+
+    
+    
+
+</body>
+
+</html>

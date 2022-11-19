@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="shortcut icon" href="/static/img/icons/icon-48x48.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main class="d-flex w-100">
+      <div class="container d-flex flex-column">
+        <div class="row vh-100">
+          <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+  
+              <div class="text-center mt-4">
+                <h1 class="h2">Welcome back</h1>
+                <p class="lead">
+                  Sign in to your account to continue
+                </p>
+              </div>
+  
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-4">
+                    <form method="POST" action="/login_validation">
+                      <p style="color: red;display: inline;">{{invalid_msg}}</p>
+                      <p style="color: red;display: inline;">{{email_send}}</p>
+                      <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+                        <small>
+                          <a href="/verify_email">Forgot password</a>
+                        </small>
+                        <small style="float: right;">
+                          <a href="/register">Create account</a>
+                        </small>
+                      </div>
+                      <div>
+              
+            </label>
+                      </div>
+                      <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  
+    <script src="/static/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+  
+  </body>
+  
+</html>
